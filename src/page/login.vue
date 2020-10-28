@@ -35,6 +35,7 @@
 
 <script>
 import {getKnowLedge, getAnalyseKnowLedge} from '../utils/utils'
+
 export default {
   name: "login",
   data() {

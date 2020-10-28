@@ -67,7 +67,7 @@
                 </router-link>
               </div>
             </div>
-            <p-chart :options="pie_chart_option" ref="pie_chart_home"/>
+            <p-chart :options="pie_chart_option" ref="pie_chart_home" />
           </div>
         </div>
         <div class="top-right">
@@ -108,6 +108,7 @@ import headTop from "@/components/headTop";
 import lineChart from "@/components/charts/lineChart";
 import timeHelper from "../utils/time_helper";
 import ECharts from "vue-echarts";
+import web from "../config/web";
 
 export default {
   data() {
@@ -278,8 +279,12 @@ export default {
         return;
       }
       var ragion = this.$session.get("Analyseknowledge").RegionWithValue;
-      this.$axios
-        .get("/user/getGroundUser")
+
+      web
+        .request({
+          url: "/user/getGroundUser",
+          method: 'get',
+        })
         .then((res) => {
           var pie_data = [];
           res.data.map((element) => {
