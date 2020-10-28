@@ -1,0 +1,225 @@
+.data_v_page {
+  width: calc(~"100% - 1.6rem");
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+  height: 100%;
+  color: #fff;
+  background-color: #ECF6FF;
+}
+
+/* demo_v */
+
+.block-top-content {
+  width: 100%;
+  height: calc(~"50% - 30px");
+  display: flex;
+  margin-bottom: 0.8rem;
+
+  .mc-top,
+  .mc-bottom {
+    box-sizing: border-box;
+    display: flex;
+  }
+
+  .mc-top {
+    height: 100%;
+    width: calc(~"70% - 0.8rem");
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-right: 0.8rem;
+  }
+
+  .top-left-cmp,
+  .bottom-left-container {
+    width: 70%;
+  }
+
+  .top-middle-cmp,
+  .top-right-cmp {
+    width: 100%;
+  }
+
+  .block-top-right{
+    height: 100%;
+    width: 30%;
+    // margin-left: 0.8rem;
+  }
+}
+
+.block-bottom-content {
+  height: calc(~"50% - 60px");
+  width: 100%;
+  display: flex;
+  flex-grow: 0;
+  box-sizing: border-box;
+  // background-color: #fff;
+  border-radius: 10px;
+}
+
+.el-table-column{
+	font-size: 55px;
+}
+
+
+/* 表格 */
+
+.block-bottom-content{
+  // padding: 10px;
+  // background-color: #fff;
+  border-radius: 10px;
+}
+
+.el-table{
+  border: 1px solid #99A3D3;
+  border-radius: 5px;
+}
+
+.el-table th {
+    background-image: linear-gradient(#ECF6FF, #CED7FC);
+    color: #5E5F7D;
+    font-size: 16px;
+    font-weight: 600;
+    border-right: 1px solid #ffffff;
+}
+
+.el-table .cell{
+  line-height: 26px;
+}
+
+.el-table tr:nth-child(even){
+  background: #F5FAFF;
+}
+
+/* 折线、柱形图 */
+
+
+.top-right-cmp {
+  width: 100%;
+  height: 100%;
+  color: #fff;
+}
+
+.mc-top-select{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.mc-top-select-btn1{
+  margin-right: 8px;
+  width: 55px;
+  height: 40px;
+  border-radius: 7px;
+  background-color: #EBF0FE;
+  color: #516DFC;
+  font-weight: bold;
+}
+
+.mc-top-select-btn1:hover {
+    background-color: #DDE6FE;
+    color: #516DFC;
+}
+
+.mc-top-select-btn1:active {
+    background-color: #8F8FFF;
+    color: #ffffff;
+}
+
+.mc-top-select-btn2{
+  margin-left: 8px;
+  width: 80px;
+  height: 40px;
+  border-radius: 17px;
+  background-image: linear-gradient(#8282FE, #4F6DFC);
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.mc-top-select-btn2:hover {
+    background-image: linear-gradient(#8282FE, #4F6DFC);
+    color: #ffffff;
+    font-size: 16px;
+    border: 2px solid #ffffff;
+}
+
+.mc-top-select-btn2:active {
+    background-image: linear-gradient(#8282FE, #4F6DFC);
+    color: #ffffff;
+    font-size: 16px;
+    border: 2px solid #ffffff;
+}
+
+.el-popper[x-placement^=bottom] {
+    margin-top: 2px;
+}
+
+.el-date-editor.el-input{
+  width: 160px;
+  border-radius: 3px;
+}
+
+.el-input__inner:hover {
+    border: 1px solid #8F8FFF;
+}
+
+.mc-top-chart{
+  padding-top: 30px;
+  height: calc(~"100% - 50px");
+  width: 100%;
+  display: flex;
+  flex-grow: 0;
+  box-sizing: border-box;
+}
+
+
+/* 饼图 */
+#pie-chart {
+  width: 100%;
+    height: 50px;
+    /* font-weight: bold;
+    text-indent: 20px;
+    font-size: 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center; */
+}
+
+.pie-chart-title{
+  height: 100px;
+
+}
+
+#pie-chart {
+  width: 100%;
+  height: 100%;
+  color: #000;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  border-radius: 10px;
+
+  .echarts {
+    width: 100%;
+    height: calc(~"100% - 50px");
+  }
+  .pie-chart-title {
+    height: 50px;
+    font-weight: bold;
+    text-indent: 20px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+  }
+
+  .dv-charts-container {
+    height: calc(~"100% - 50px");
+  }
+}
