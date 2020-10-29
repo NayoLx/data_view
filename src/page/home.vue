@@ -205,10 +205,14 @@ export default {
 
     //当日注册 总注册人数统计
     getUserData() {
-      this.$axios
-        .post("/user/getAllUser", {
-          startTime: timeHelper.getTodayAt0(),
-          endTime: timeHelper.getTodayAt0() + 86400,
+      web
+        .request({
+          url: "/user/getAllUser",
+          method: "post",
+          data: {
+            startTime: timeHelper.getTodayAt0(),
+            endTime: timeHelper.getTodayAt0() + 86400,
+          },
         })
         .then((res) => {
           if (res.data.length !== 0 && res.data != null) {
@@ -220,8 +224,11 @@ export default {
         });
 
       //获取总的注册用户数据
-      this.$axios
-        .get("/user/getUserAtCount")
+      web
+        .request({
+          url: "/user/getUserAtCount",
+          method: "get",
+        })
         .then((res) => {
           if (res.data.length !== 0 && res.data != null) {
             this.allUserCount = res.data[0].value;
@@ -245,8 +252,11 @@ export default {
     //当日订单
     getOrderData() {
       //获取总的订单数
-      this.$axios
-        .post("/dailyExhib/getOrderAtCount")
+      web
+        .request({
+          url: "/dailyExhib/getOrderAtCount",
+          method: "post",
+        })
         .then((res) => {
           this.allOrderCount = res.data;
         })
@@ -255,10 +265,14 @@ export default {
         });
 
       //获取当日订单数
-      this.$axios
-        .post("/dailyExhib/getAllOrder", {
-          startTime: timeHelper.getTodayAt0(),
-          endTime: timeHelper.getTodayAt0() + 86400,
+      web
+        .request({
+          url: "/dailyExhib/getAllOrder",
+          method: "post",
+          data: {
+            startTime: timeHelper.getTodayAt0(),
+            endTime: timeHelper.getTodayAt0() + 86400,
+          },
         })
         .then((res) => {
           res.data.map((element) => (this.orderCount += element.value));
@@ -283,7 +297,7 @@ export default {
       web
         .request({
           url: "/user/getGroundUser",
-          method: 'get',
+          method: "get",
         })
         .then((res) => {
           var pie_data = [];

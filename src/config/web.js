@@ -46,7 +46,9 @@ class web {
                             type: 'error',
                             message: '令牌已过期，请重新登录',
                         });
-                        location.replace('login');  //返回登录
+                        setTimeout(function () {
+                            location.replace('/'); //返回登录    
+                        }, 1000)
                         break;
                     case '404':
                         Message({
@@ -64,7 +66,9 @@ class web {
                     type: 'error',
                     message: '服务器连接错误，请重新登录',
                 });
-                location.replace('login'); //返回登录
+                setTimeout(function () {
+                    location.replace('/'); //返回登录    
+                }, 1000)
                 return -1;
             }
             return Promise.reject(err);
