@@ -1,7 +1,7 @@
 <template>
   <div class="data_v_page" v-loading="loading">
     <head-top></head-top>
-    <div class="block-top-content" >
+    <div class="block-top-content">
       <div class="mc-top">
         <div class="mc-top-select">
           <button class="mc-top-select-btn1" @click="getThisWeekData()">
@@ -48,10 +48,13 @@
         <el-table-column prop="count" label="总发布订单数量"> </el-table-column>
       </el-table>
 
-      <div class="block-top-right" style="width: 30%;">
+      <div class="block-top-right" style="width: 30%">
         <div class="pie-chart-earth">
           <router-link
-            :to="{name: 'map', params: {type: 'order', data: orderAreaData}}"
+            :to="{
+              name: 'map',
+              params: { type: 'order', data: orderAreaData },
+            }"
             ><i class="el-icon-search"></i><span> 地图</span>
           </router-link>
         </div>
@@ -65,6 +68,8 @@
 import headTop from "@/components/headTop";
 import lineChart from "@/components/charts/lineChart";
 import pieChart from "@/components/charts/pieChart";
+import web from "@/config/web";
+
 import {
   getTodayAt0,
   getMouthArrTimeStamp,
@@ -85,7 +90,7 @@ export default {
       selectDay: [],
       scroll_board_config: {},
       lines_chart_option: {},
-      orderAreaData:[],
+      orderAreaData: [],
     };
   },
   components: {
@@ -113,11 +118,13 @@ export default {
         return;
       }
       var ragion = this.$session.get("Analyseknowledge").RegionWithValue;
-      this.$axios.post("/dailyExhib/getOrderWithArea").then((res) => {
-        let areaArr = this.areaOrderProcess(ragion, res);
-		this.orderAreaData = areaArr;
-        this.setPieValueArea(areaArr);
-      });
+      web
+        .request({ url: "/dailyExhib/getOrderWithArea", method: "post" })
+        .then((res) => {
+          let areaArr = this.areaOrderProcess(ragion, res);
+          this.orderAreaData = areaArr;
+          this.setPieValueArea(areaArr);
+        });
     },
 
     //数据处理
@@ -228,8 +235,12 @@ export default {
 
     //调用接口获取数据并进行数据处理
     getLineData(time) {
-      this.$axios
-        .post("/dailyExhib/getDataWithTime", time)
+      web
+        .request({
+          url: "/dailyExhib/getDataWithTime",
+          method: "post",
+          data: time,
+        })
         .then((res) => {
           this.setTableData(res.data);
           this.setLineData(res.data);
@@ -245,8 +256,12 @@ export default {
     //饼图数据
     getGroundData(time) {
       var orderArrType = [];
-      this.$axios
-        .post("/dailyExhib/getAllOrder", time)
+      web
+        .request({
+          url: "/dailyExhib/getAllOrder",
+          method: "post",
+          data: time,
+        })
         .then((res) => {
           this.setPieValue(res.data);
         })
@@ -586,49 +601,48 @@ export default {
 
 <style lang="less">
 @import "../style/data_v";
-.block-bottom-content{
+.block-bottom-content {
   margin-top: 0.8rem;
   padding: 0px;
   width: 100%;
 }
 
-.bottom-left-table{
-   height: 400px;
-    margin-right: 0.8rem;
+.bottom-left-table {
+  height: 400px;
+  margin-right: 0.8rem;
 }
 
-.el-table{
+.el-table {
   width: 100%;
   height: 100%;
 }
 
-.block-top-right{
+.block-top-right {
   height: 100%;
   // width: calc(~"30% - 0.8rem");
   // margin-left: 0.8rem;
 }
 
+.pie-chart-earth {
+  background-image: linear-gradient(#ecf6ff, #ced7fc);
+  border-radius: 8px;
+  margin-right: 10px;
+  margin-top: 10px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 7px;
+  padding-right: 7px;
+  float: right;
+  color: #3190e8;
 
-  .pie-chart-earth{
-    background-image: linear-gradient(#ecf6ff, #ced7fc);
-    border-radius: 8px;
-    margin-right: 10px;
-    margin-top: 10px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    padding-left: 7px;
-    padding-right: 7px;
-    float: right;
-    color: #3190E8;
-
-    i{
-      color: #5B71FC;
-      font-size: 17px;
-    }
-
-    span{
-      color: #5B71FC;
-      font-size: 17px;
-    }
+  i {
+    color: #5b71fc;
+    font-size: 17px;
   }
+
+  span {
+    color: #5b71fc;
+    font-size: 17px;
+  }
+}
 </style>

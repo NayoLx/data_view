@@ -108,7 +108,7 @@ import headTop from "@/components/headTop";
 import lineChart from "@/components/charts/lineChart";
 import timeHelper from "../utils/time_helper";
 import ECharts from "vue-echarts";
-import web from "../config/web";
+import web from "@/config/web";
 
 export default {
   data() {

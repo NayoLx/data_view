@@ -34,7 +34,7 @@
     </div>
 
     <div class="block-bottom-content">
-      <el-table :data="paidlistArr"  height= "100%" border >
+      <el-table :data="paidlistArr" height="100%" border>
         <el-table-column prop="paidTime" label="日期" width="170">
         </el-table-column>
         <el-table-column prop="pay_channel_10" label="支付宝支付(元)">
@@ -53,6 +53,8 @@
 import headTop from "@/components/headTop";
 import lineChart from "@/components/charts/lineChart";
 import pieChart from "@/components/charts/pieChart";
+import web from "@/config/web";
+
 import {
   getTodayAt0,
   getMouthArrTimeStamp,
@@ -153,8 +155,12 @@ export default {
 
     //调用接口获取数据并进行数据处理
     getLineData(time) {
-      this.$axios
-        .post("/dailyTransflow/getDataWithTime", time)
+      web
+        .request({
+          url: "/dailyTransflow/getDataWithTime",
+          method: "post",
+          data: time,
+        })
         .then((res) => {
           this.setTableData(res.data);
           this.setLineData(res.data);
@@ -170,8 +176,12 @@ export default {
     //饼图数据
     getGroundData(time) {
       var that = this;
-      that.$axios
-        .post("/dailyTransflow/getTotalTransflowWithTime", time)
+      web
+        .request({
+          url: "/dailyTransflow/getTotalTransflowWithTime",
+          method: "post",
+          data: time,
+        })
         .then((res) => {
           var pie_data = [];
           res.data.map((element) => {
@@ -457,9 +467,8 @@ export default {
   margin-top: 0.8rem;
 }
 
-.mc-top{
+.mc-top {
   width: calc(~"70% - 0.8rem") !important;
   margin-right: 0.8rem;
 }
-
 </style>
