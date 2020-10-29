@@ -25,29 +25,46 @@ class web {
     }
 
     setInterceotors = (instance, url) => {
+        const loading = Loading.service({
+            lock: true,
+            text: '加载中...'
+        });
         instance.interceptors.request.use((config) => {
+            loading;
             config.headers.AuthorizationToken = localStorage.getItem('AuthorizationToken') || '';
             return config;
         }, err => Promise.reject(err));
 
         instance.interceptors.response.use((response) => {
-            
-            // todo: 想根据业务需要，对响应结果预先处理的，都放在这里
+            loading.close();
             return response;
         }, (err) => {
             if (err.response) { // 响应错误码处理
                 switch (err.response.status) {
-                    case '403':
-                        // todo: handler server forbidden error
+                    case '401':
+                        Message({
+                            type: 'error',
+                            message: '令牌已过期，请重新登录',
+                        });
+                        location.replace('login');  //返回登录
                         break;
-                    // todo: handler other status code
+                    case '404':
+                        Message({
+                            type: 'error',
+                            message: '请求页面不存在',
+                        });
+                        break;
                     default:
                         break;
                 }
                 return Promise.reject(err.response);
             }
-            if (!window.navigator.online) { // 断网处理
-                // todo: jump to offline page
+            if (!window.navigator.online) {
+                Message({
+                    type: 'error',
+                    message: '服务器连接错误，请重新登录',
+                });
+                location.replace('login'); //返回登录
                 return -1;
             }
             return Promise.reject(err);
