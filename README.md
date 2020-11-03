@@ -68,3 +68,6 @@ npm i moment
 ## 安装vue-echart
 
 npm install echarts vue-echarts
+
+
+## 运行run.bat即可，自行设置数据库
