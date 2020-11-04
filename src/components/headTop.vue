@@ -28,10 +28,10 @@ export default {
       nickName: "",
     };
   },
-  created() {},
-  mounted() {
+  created() {
     this.nickName = this.$store.getters.getNickName;
   },
+  mounted() {},
   computed: {},
   methods: {
     async handleCommand(command) {
@@ -49,7 +49,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .header_container {
   display: flex;
   justify-content: space-between;
@@ -76,5 +76,6 @@ export default {
 }
 .head_img span {
   padding-right: 10px;
+  color: #000;
 }
 </style>
