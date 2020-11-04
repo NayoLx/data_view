@@ -69,5 +69,9 @@ npm i moment
 
 npm install echarts vue-echarts
 
+## L2DWidget 
+
+npm install -S live2d-widget
+
 
 ## 运行run.bat即可，自行设置数据库

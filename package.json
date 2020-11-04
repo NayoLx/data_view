@@ -20,6 +20,7 @@
     "element-ui": "^2.13.2",
     "express": "^4.17.1",
     "less-loader": "^5.0.0",
+    "live2d-widget": "^3.1.4",
     "moment": "^2.29.1",
     "mongodb": "^3.6.2",
     "mongoose": "^5.10.9",
