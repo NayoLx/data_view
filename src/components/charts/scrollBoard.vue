@@ -32,7 +32,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #scroll-board {
   width: 100%;
   box-sizing: border-box;

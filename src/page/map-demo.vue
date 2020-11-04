@@ -136,7 +136,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .data_rose_page {
   width: 100%;
   height: 100%;

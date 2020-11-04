@@ -23,7 +23,8 @@ export default {
 };
 </script>
 
-<style>
+//scoped 只用于当前文件
+<style scoped>
 .data_rose_page {
   width: 100%;
   height: 100%;

@@ -460,7 +460,7 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 @import "../style/data_v";
 
 .block-bottom-content {

@@ -599,7 +599,7 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 @import "../style/data_v";
 .block-bottom-content {
   margin-top: 0.8rem;

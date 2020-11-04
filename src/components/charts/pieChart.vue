@@ -5,7 +5,7 @@
   </div>
 </template>
 
-<style lang="less">
+<style lang="less" scoped>
 @import "../../style/data_v";
 #pie-chart {
   width: 100%;
