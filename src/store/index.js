@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex);
 
-//定义初始变量
+//定义初始变量 -- 全局变量
 const state = {
     token: '',
     nickName: '',

@@ -2,9 +2,11 @@
   <div class="header_container">
     <el-breadcrumb separator="/">
       <el-breadcrumb-item :to="{ path: '/manage' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item v-for="(item, index) in $route.meta.title" :key="index">{{
-        item
-      }}</el-breadcrumb-item>
+      <el-breadcrumb-item
+        v-for="(item, index) in $route.meta.title"
+        :key="index"
+        >{{ item }}</el-breadcrumb-item
+      >
     </el-breadcrumb>
     <div class="head_img">
       <span> {{ nickName }}</span>
@@ -28,6 +30,7 @@ export default {
   },
   created() {},
   mounted() {
+    this.nickName = this.$store.getters.getNickName;
   },
   computed: {},
   methods: {
@@ -53,14 +56,13 @@ export default {
   align-items: center;
   padding-left: 10px;
   height: 60px;
-
 }
 
- .el-breadcrumb__item {
-      float: left;
-      font-size: 16px;
-      font-weight: bold;
-  }
+.el-breadcrumb__item {
+  float: left;
+  font-size: 16px;
+  font-weight: bold;
+}
 
 .logo_img {
   width: 38px;

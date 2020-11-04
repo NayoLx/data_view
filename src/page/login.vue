@@ -57,6 +57,7 @@ export default {
         if (valid) {
           this.$session.set('knowledge', getKnowLedge());
           this.$session.set('Analyseknowledge', getAnalyseKnowLedge());
+          this.$store.dispatch('login', {id: '123', nickName: '123'});
           this.$router.push("manage");
         } else {
           this.showMessage("error", "登录失败，请检查账号密码");

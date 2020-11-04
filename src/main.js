@@ -9,6 +9,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import moment from 'moment'
 import {storePlugin} from './utils/localStorage.js'
 import echarts from 'echarts'
+import store from './store/index'
 
 import dataV from '@jiaminghi/data-view'
 
@@ -18,6 +19,7 @@ Vue.use(ElementUI);
 
 Vue.config.productionTip = false;
 Vue.prototype.$axios = axios;
+Vue.prototype.$store = store;
 Vue.prototype.moment = moment;
 
 /* eslint-disable no-new */
